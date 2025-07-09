@@ -49,18 +49,19 @@ export function CreditCalculator() {
               placeholder={`Course ${index + 1} Credits`}
               value={credit.value}
               onChange={(e) => handleCreditChange(credit.id, e.target.value)}
+              suppressHydrationWarning
             />
-            <Button variant="ghost" size="icon" onClick={() => removeCreditInput(credit.id)} disabled={credits.length === 1}>
+            <Button variant="ghost" size="icon" onClick={() => removeCreditInput(credit.id)} disabled={credits.length === 1} suppressHydrationWarning>
               <Trash className="h-4 w-4 text-destructive" />
             </Button>
           </div>
         ))}
         </div>
         <div className='flex gap-2'>
-            <Button variant="outline" size="sm" onClick={addCreditInput}>
+            <Button variant="outline" size="sm" onClick={addCreditInput} suppressHydrationWarning>
                 <Plus className="mr-2 h-4 w-4" /> Add Course
             </Button>
-            <Button size="sm" onClick={calculateTotal} className='flex-grow'>
+            <Button size="sm" onClick={calculateTotal} className='flex-grow' suppressHydrationWarning>
                 <Sigma className="mr-2 h-4 w-4" /> Total
             </Button>
         </div>

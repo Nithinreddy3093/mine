@@ -74,12 +74,13 @@ export function GpaCalculator() {
                     placeholder="e.g., 4"
                     value={subject.credits}
                     onChange={(e) => handleSubjectChange(subject.id, 'credits', e.target.value)}
+                    suppressHydrationWarning
                 />
             </div>
             <div className="md:col-span-3 space-y-1">
                 <Label htmlFor={`grade-${subject.id}`}>Grade</Label>
                 <Select onValueChange={(value) => handleSubjectChange(subject.id, 'grade', value)} value={subject.grade || undefined}>
-                    <SelectTrigger id={`grade-${subject.id}`}>
+                    <SelectTrigger id={`grade-${subject.id}`} suppressHydrationWarning>
                         <SelectValue placeholder="Select Grade" />
                     </SelectTrigger>
                     <SelectContent>
@@ -93,16 +94,17 @@ export function GpaCalculator() {
                 onClick={() => removeSubject(subject.id)}
                 disabled={subjects.length === 1}
                 className="text-destructive hover:bg-destructive/10"
+                suppressHydrationWarning
             >
               <Trash className="h-4 w-4" />
             </Button>
           </div>
         ))}
         <div className='flex gap-2'>
-            <Button variant="outline" onClick={addSubject}>
+            <Button variant="outline" onClick={addSubject} suppressHydrationWarning>
                 <Plus className="mr-2 h-4 w-4" /> Add Subject
             </Button>
-            <Button onClick={calculateGpa} className="flex-grow bg-accent hover:bg-accent/90">
+            <Button onClick={calculateGpa} className="flex-grow bg-accent hover:bg-accent/90" suppressHydrationWarning>
                 Calculate GPA
             </Button>
         </div>
