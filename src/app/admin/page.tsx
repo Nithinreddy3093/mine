@@ -1,12 +1,12 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Loader, Wand2 } from 'lucide-react';
 import { getAdminDraft } from '@/actions/ai';
-import { useEffect, useRef, useState } from 'react';
+import { useActionState, useEffect, useRef, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
 const initialState = {
@@ -29,7 +29,7 @@ function SubmitButton() {
 }
 
 export default function AdminPage() {
-  const [state, formAction] = useFormState(getAdminDraft, initialState);
+  const [state, formAction] = useActionState(getAdminDraft, initialState);
   const [draft, setDraft] = useState('');
   const {toast} = useToast();
   const formRef = useRef<HTMLFormElement>(null);

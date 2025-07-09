@@ -1,11 +1,11 @@
 'use client';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { getAiAnswer } from '@/actions/ai';
 import { Bot, Loader, Send, Sparkles } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useActionState, useEffect, useRef } from 'react';
 
 const initialState = {
   answer: '',
@@ -21,7 +21,7 @@ function SubmitButton() {
 }
 
 export function AiAssistant() {
-  const [state, formAction] = useFormState(getAiAnswer, initialState);
+  const [state, formAction] = useActionState(getAiAnswer, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 
   const { pending } = useFormStatus();
