@@ -25,7 +25,10 @@ const navItems = [
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const pageTitle = navItems.find(item => item.href === pathname)?.label || 'SRM Navigator';
+  const pageTitle = navItems.find(item => {
+    if (item.href === '/') return pathname === '/';
+    return pathname.startsWith(item.href)
+  })?.label || 'SRM Navigator';
 
   return (
     <SidebarProvider>
@@ -35,7 +38,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             <div className="bg-primary p-2 rounded-lg flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-foreground"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             </div>
-            <h1 className="text-xl font-bold">SRM Navigator</h1>
+            <h1 className="text-xl font-bold font-headline">SRM Navigator</h1>
           </div>
         </SidebarHeader>
         <SidebarContent>
@@ -61,7 +64,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         <header className="flex h-16 items-center gap-4 border-b bg-background/95 backdrop-blur-sm px-6 sticky top-0 z-30">
           <SidebarTrigger className="md:hidden" />
           <div className="flex-1">
-            <h2 className="text-xl font-semibold capitalize">
+            <h2 className="text-xl font-semibold capitalize font-headline">
               {pageTitle}
             </h2>
           </div>

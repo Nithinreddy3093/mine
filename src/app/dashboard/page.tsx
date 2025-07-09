@@ -16,7 +16,7 @@ export default function DashboardPage() {
     return (
         <div className="space-y-8">
              <div className="text-center">
-                <h1 className="text-4xl font-bold text-primary">Student Dashboard</h1>
+                <h1 className="text-4xl font-bold text-primary font-headline">Student Dashboard</h1>
                 <p className="text-muted-foreground mt-2">Your one-stop place for quick calculations and important dates.</p>
             </div>
 
@@ -61,7 +61,7 @@ export default function DashboardPage() {
                     <Card>
                         <CardHeader>
                             <CardTitle className="flex items-center gap-2"><CalendarCheck /> Important Dates</CardTitle>
-                        </CardHeader>
+                        </Header>
                         <CardContent>
                            <ul className="space-y-3">
                             {importantDates.map((item, index) => (

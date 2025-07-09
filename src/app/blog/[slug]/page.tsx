@@ -29,7 +29,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </Button>
         <article className="max-w-4xl mx-auto bg-card p-6 md:p-10 rounded-lg shadow-lg">
         <div className="mb-8 text-center">
-            <h1 className="text-3xl md:text-5xl font-bold text-primary mb-4">{post.title}</h1>
+            <h1 className="text-3xl md:text-5xl font-bold text-primary mb-4 font-headline">{post.title}</h1>
             <div className="flex justify-center items-center gap-4 text-muted-foreground">
                 <Badge variant="secondary">{post.author}</Badge>
                 <span>&bull;</span>
