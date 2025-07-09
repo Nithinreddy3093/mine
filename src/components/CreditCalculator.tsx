@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
@@ -14,9 +14,10 @@ type CreditItem = {
 export function CreditCalculator() {
   const [credits, setCredits] = useState<CreditItem[]>([{ id: 1, value: '' }]);
   const [totalCredits, setTotalCredits] = useState<number>(0);
+  const nextId = useRef(2);
 
   const addCreditInput = () => {
-    setCredits([...credits, { id: Date.now(), value: '' }]);
+    setCredits([...credits, { id: nextId.current++, value: '' }]);
   };
 
   const removeCreditInput = (id: number) => {

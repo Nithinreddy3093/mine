@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
@@ -18,9 +18,10 @@ type Subject = {
 export function GpaCalculator() {
   const [subjects, setSubjects] = useState<Subject[]>([{ id: 1, credits: '', grade: '' }]);
   const [gpa, setGpa] = useState<number | null>(null);
+  const nextId = useRef(2);
 
   const addSubject = () => {
-    setSubjects([...subjects, { id: Date.now(), credits: '', grade: '' }]);
+    setSubjects([...subjects, { id: nextId.current++, credits: '', grade: '' }]);
   };
 
   const removeSubject = (id: number) => {
@@ -77,7 +78,7 @@ export function GpaCalculator() {
             </div>
             <div className="md:col-span-3 space-y-1">
                 <Label htmlFor={`grade-${subject.id}`}>Grade</Label>
-                <Select onValueChange={(value) => handleSubjectChange(subject.id, 'grade', value)}>
+                <Select onValueChange={(value) => handleSubjectChange(subject.id, 'grade', value)} value={subject.grade || undefined}>
                     <SelectTrigger id={`grade-${subject.id}`}>
                         <SelectValue placeholder="Select Grade" />
                     </SelectTrigger>
