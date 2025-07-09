@@ -21,7 +21,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="space-y-8">
-        <Link href="/blog">
+        <Link href="/blog" asChild>
             <Button variant="outline">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Blog
