@@ -21,12 +21,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="space-y-8">
-        <Link href="/blog" asChild>
-            <Button variant="outline">
+        <Button variant="outline" asChild>
+            <Link href="/blog">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Blog
-            </Button>
-        </Link>
+            </Link>
+        </Button>
         <article className="max-w-4xl mx-auto bg-card p-6 md:p-10 rounded-lg shadow-lg">
         <div className="mb-8 text-center">
             <h1 className="text-3xl md:text-5xl font-bold text-primary mb-4">{post.title}</h1>

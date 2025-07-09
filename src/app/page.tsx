@@ -59,11 +59,11 @@ export default function Home() {
                 <p className="text-muted-foreground">{feature.description}</p>
               </CardContent>
               <div className="p-6 pt-0">
-                <Link href={feature.href} asChild>
-                  <Button className="w-full" variant="outline">
+                <Button className="w-full" variant="outline" asChild>
+                  <Link href={feature.href}>
                     {feature.cta}
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </Card>
           ))}
