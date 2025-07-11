@@ -54,8 +54,7 @@ export function AiAssistant({ initialQuery }: { initialQuery?: string | null }) 
     
     if (initialQuery && inputRef.current) {
         inputRef.current.value = initialQuery;
-        // Small delay to ensure state is set before submitting
-        setTimeout(() => formRef.current?.requestSubmit(), 100);
+        formRef.current?.requestSubmit();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialQuery]);
@@ -103,28 +102,27 @@ export function AiAssistant({ initialQuery }: { initialQuery?: string | null }) 
         </div>
 
         <div className='p-6 flex-grow overflow-hidden flex flex-col'>
+            {messages.length <= 1 && (
+                 <div className="p-4 border-l-4 border-accent bg-accent/10 rounded-r-lg mb-4">
+                    <div className="flex items-center gap-2 mb-4">
+                        <Lightbulb className="h-5 w-5 text-accent"/>
+                        <h3 className="font-semibold text-accent-foreground">Try asking:</h3>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+                        {suggestions.map((q) => (
+                            <button 
+                                key={q}
+                                onClick={() => handleSuggestionClick(q)}
+                                className="text-sm text-primary text-left hover:underline"
+                            >
+                                "{q}"
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
             <ScrollArea className="flex-1 pr-4 -mr-4 mb-4">
                 <div className="space-y-6">
-                    {messages.length === 1 && (
-                         <div className="p-4 border-l-4 border-accent bg-accent/10 rounded-r-lg">
-                            <div className="flex items-center gap-2 mb-4">
-                                <Lightbulb className="h-5 w-5 text-accent"/>
-                                <h3 className="font-semibold text-accent-foreground">Try asking:</h3>
-                            </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
-                                {suggestions.map((q) => (
-                                    <button 
-                                        key={q}
-                                        onClick={() => handleSuggestionClick(q)}
-                                        className="text-sm text-primary text-left hover:underline"
-                                    >
-                                        "{q}"
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-                    
                     {messages.map((msg, index) => (
                         <div key={index} className={`flex items-start gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                             {msg.role === 'assistant' && <Bot className="h-6 w-6 text-primary flex-shrink-0" />}

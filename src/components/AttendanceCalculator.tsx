@@ -43,13 +43,13 @@ export function AttendanceCalculator() {
       <CardContent className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="total-classes">Total Classes Held</Label>
-          <Input id="total-classes" type="number" placeholder="e.g., 40" value={totalClasses} onChange={(e) => setTotalClasses(e.target.value)} suppressHydrationWarning />
+          <Input id="total-classes" type="number" placeholder="e.g., 40" value={totalClasses} onChange={(e) => setTotalClasses(e.target.value)} />
         </div>
         <div className="space-y-2">
           <Label htmlFor="attended-classes">Classes You Attended</Label>
-          <Input id="attended-classes" type="number" placeholder="e.g., 35" value={attendedClasses} onChange={(e) => setAttendedClasses(e.target.value)} suppressHydrationWarning />
+          <Input id="attended-classes" type="number" placeholder="e.g., 35" value={attendedClasses} onChange={(e) => setAttendedClasses(e.target.value)} />
         </div>
-        <Button onClick={calculateAttendance} className="w-full" suppressHydrationWarning>Calculate</Button>
+        <Button onClick={calculateAttendance} className="w-full">Calculate</Button>
         {result && (
           <div className={`text-center p-3 rounded-lg mt-4 ${result.percentage >= 75 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
             <p className="font-bold text-2xl">{result.percentage.toFixed(2)}%</p>
