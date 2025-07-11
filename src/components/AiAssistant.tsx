@@ -1,5 +1,4 @@
 'use client';
-import { useFormStatus } from 'react-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { getAiAnswer } from '@/actions/ai';
@@ -51,11 +50,10 @@ export function AiAssistant() {
       }]);
     }
     // Also reset form after submission if there was a user message
-    const lastMessage = messages[messages.length - 1];
-    if (lastMessage?.role === 'user') {
-      formRef.current?.reset();
+    if (formRef.current?.querySelector('input[name="query"]:not([value=""])')) {
+        formRef.current?.reset();
     }
-  }, [state, messages]);
+  }, [state]);
 
 
   const handleSuggestionClick = (suggestion: string) => {
