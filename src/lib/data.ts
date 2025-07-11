@@ -156,7 +156,7 @@ export const posts: Post[] = [
     excerpt: 'Your journey to a great job starts on day one. Here’s how you can build your profile for placements right from your first year.',
     author: 'Placement Cell',
     date: '2/15/2024',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://srmap.edu.in/wp-content/uploads/2021/05/Placements-Top-Banner.jpg',
     dataAiHint: 'professional job interview',
     content: 'Placements might seem far away, but the preparation starts now. Focus on maintaining a good CGPA, as many companies have an academic cutoff. Participate in hackathons, workshops, and join technical clubs to build your skills. Work on personal projects to showcase your abilities. In your third year, start preparing for aptitude tests and interviews. A consistent effort will pay off in the end.',
     category: 'Placements',
