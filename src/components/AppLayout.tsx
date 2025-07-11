@@ -32,6 +32,7 @@ function DesktopNav() {
         const isActive = isClient && pathname === item.href;
         return (
             <Link
+                suppressHydrationWarning
                 key={item.label}
                 href={item.href}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors hover:text-primary hover:bg-primary/10 ${isActive ? 'bg-primary/10 text-primary font-semibold' : 'text-muted-foreground'}`}
@@ -71,6 +72,7 @@ function MobileNav() {
                     const isActive = isClient && pathname === item.href;
                     return (
                         <Link
+                        suppressHydrationWarning
                         key={item.label}
                         href={item.href}
                         className={`hover:text-primary ${isActive ? 'text-primary' : 'text-muted-foreground'}`}
@@ -111,7 +113,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             <MobileNav />
         </div>
       </header>
-      <main className="flex flex-1 flex-col">{children}</main>
+      <main className="flex flex-1 flex-col p-4 sm:p-6 lg:p-8">{children}</main>
     </div>
   );
 }
