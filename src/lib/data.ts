@@ -80,6 +80,7 @@ export type Post = {
   dataAiHint: string;
   category: string;
   readTime: number;
+  tags: string[];
 };
 
 export const posts: Post[] = [
@@ -91,9 +92,10 @@ export const posts: Post[] = [
     date: '1/15/2024',
     imageUrl: 'https://placehold.co/600x400.png',
     dataAiHint: 'students walking campus',
-    content: "Welcome to SRM! The first year is a whirlwind of new experiences, friends, and challenges. The key is to find a balance. Don't just bury yourself in books; explore the campus and join a club that interests you. This is the best way to make friends and discover new passions.\n\nAttend your classes regularly. It might seem tempting to skip, but keeping up with the syllabus from day one will save you a lot of stress during exams. And remember, the 75% attendance rule is real! Finally, don't be afraid to ask for help. Whether it's from professors, seniors, or counselors, the SRM community is here to support you.",
+    content: "Welcome to SRM University!\n\nStarting your journey at SRM University can be both exciting and overwhelming. This comprehensive guide will help you navigate your first year successfully.\n\n**1. Understanding the Academic System**\nSRM follows a semester-based credit system. Each semester typically lasts 16-18 weeks with regular assessments including:\n- Continuous Assessment (CA): 50 marks\n- End Semester Exam (ESE): 50 marks\n- Minimum 75% attendance required\n\n**2. Managing Your Time Effectively**\nTime management is crucial for academic success. Here are some proven strategies:\n- Create a daily schedule and stick to it\n- Use the Pomodoro Technique for studying\n- Prioritize tasks based on deadlines and importance\n- Take regular breaks to avoid burnout\n\n**3. Making the Most of Campus Life**\nUniversity life isn't just about academics. Here's how to make the most of it:\n- Join clubs that align with your interests\n- Participate in cultural and technical events\n- Build meaningful relationships with peers and faculty\n- Explore leadership opportunities\n\n**4. Preparing for Examinations**\nEffective exam preparation strategies:\n- Start preparation early, don't wait for the last minute\n- Create study groups with classmates\n- Practice previous year question papers\n- Seek help from professors during office hours\n\n**5. Building Professional Skills**\nStart building your professional profile from day one:\n- Learn programming languages relevant to your field\n- Work on personal projects\n- Build a strong LinkedIn profile\n- Apply for internships early\n\n**Conclusion**\nYour first year at SRM is a foundation for your entire university experience. Focus on building good habits, maintaining academic excellence, and making meaningful connections. Remember, every successful student started exactly where you are now.\nGood luck with your journey at SRM University!",
     category: 'First Year Guide',
     readTime: 8,
+    tags: ['First Year', 'SRM University', 'Study Tips']
   },
   {
     slug: 'cycle-test-prep',
@@ -106,6 +108,7 @@ export const posts: Post[] = [
     content: "Cycle tests are not just about last-minute cramming. Consistent preparation is key. Start by reviewing your lecture notes every day. Don't let doubts pile up; clarify them with your professors immediately after class.\n\nBefore the test, focus on solving previous years' question papers. This gives you an idea of the pattern and important topics. Form a study group with friends to discuss complex concepts. On the day of the test, stay calm, manage your time well, and attempt the questions you are most confident about first. Good luck!",
     category: 'Academics',
     readTime: 6,
+    tags: ['Academics', 'Exams', 'Preparation']
   },
   {
     slug: 'top-clubs-to-join',
@@ -118,6 +121,7 @@ export const posts: Post[] = [
     content: "Joining a club is one of the best decisions you can make. It helps you build skills, network, and have fun. The SRM Tech Club is a must for coders and tech enthusiasts, with regular workshops and hackathons.\n\nFor those interested in public speaking and leadership, the Toastmasters Club is an excellent choice. If you have a creative spark, the Arts & Culture Club hosts numerous events and performances. The Entrepreneurship Cell (E-Cell) is perfect for aspiring business minds, and finally, joining a sports team is a great way to stay fit and build team spirit. Explore them all during the club induction season!",
     category: 'Campus Life',
     readTime: 5,
+    tags: ['Clubs', 'Campus Life', 'Student Activities']
   },
   {
     slug: 'gpa-system-explained',
@@ -130,6 +134,7 @@ export const posts: Post[] = [
     content: 'The GPA system can seem confusing at first, but it\'s straightforward once you get the hang of it. Your Grade Point Average (GPA) is a measure of your academic performance each semester. It is calculated by dividing the total number of grade points earned by the total number of credits attempted. Each letter grade (O, A+, A, etc.) has a corresponding point value. Mastering this will help you track your progress effectively.',
     category: 'Academics',
     readTime: 7,
+    tags: ['GPA', 'Academics', 'Grading']
   },
   {
     slug: 'hostel-life-guide',
@@ -142,6 +147,7 @@ export const posts: Post[] = [
     content: 'Living in a hostel is a core part of the SRM experience. You\'ll learn to be independent, manage your time, and live with people from diverse backgrounds. The rooms are typically shared, and the mess provides daily meals. While it takes some getting used to, it\'s an opportunity to forge lifelong friendships and create unforgettable memories. Be open, be respectful, and you\'ll have a great time!',
     category: 'Hostel Life',
     readTime: 10,
+    tags: ['Hostel', 'Campus Life']
   },
   {
     slug: 'placement-preparation',
@@ -154,6 +160,7 @@ export const posts: Post[] = [
     content: 'Placements might seem far away, but the preparation starts now. Focus on maintaining a good CGPA, as many companies have an academic cutoff. Participate in hackathons, workshops, and join technical clubs to build your skills. Work on personal projects to showcase your abilities. In your third year, start preparing for aptitude tests and interviews. A consistent effort will pay off in the end.',
     category: 'Placements',
     readTime: 12,
+    tags: ['Placements', 'Career', 'Interview']
   },
 ];
 
