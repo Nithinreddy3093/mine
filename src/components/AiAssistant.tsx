@@ -3,7 +3,7 @@ import { useFormStatus } from 'react-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { getAiAnswer } from '@/actions/ai';
-import { Bot, Loader, Send, Sparkles, User, Lightbulb, CornerDownLeft } from 'lucide-react';
+import { Bot, Loader, Send, Lightbulb } from 'lucide-react';
 import { useActionState, useEffect, useRef, useState } from 'react';
 import { ScrollArea } from './ui/scroll-area';
 
@@ -49,28 +49,32 @@ export function AiAssistant() {
         content: state.answer,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }]);
+    }
+    // Also reset form after submission if there was a user message
+    const lastMessage = messages[messages.length - 1];
+    if (lastMessage?.role === 'user') {
       formRef.current?.reset();
     }
-  }, [state]);
+  }, [state, messages]);
 
-  const handleFormSubmit = (formData: FormData) => {
-    const query = formData.get('query') as string;
-    if (query.trim()) {
-        setMessages(prev => [...prev, {
-            role: 'user',
-            content: query,
-            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        }]);
-        formAction(formData);
-    }
-  }
 
   const handleSuggestionClick = (suggestion: string) => {
     if (inputRef.current) {
         inputRef.current.value = suggestion;
-        const formData = new FormData(formRef.current!);
-        handleFormSubmit(formData);
+        formRef.current?.requestSubmit();
     }
+  }
+
+  const handleFormAction = (formData: FormData) => {
+     const query = formData.get('query') as string;
+      if (query.trim()) {
+          setMessages(prev => [...prev, {
+              role: 'user',
+              content: query,
+              timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          }]);
+          formAction(formData);
+      }
   }
 
 
@@ -88,10 +92,10 @@ export function AiAssistant() {
             <ScrollArea className="flex-1 pr-4 -mr-4 mb-4">
                 <div className="space-y-6">
                     {messages.length === 1 && (
-                         <div className="p-4 border-l-4 border-yellow-400 bg-yellow-50 rounded-r-lg">
+                         <div className="p-4 border-l-4 border-accent bg-accent/10 rounded-r-lg">
                             <div className="flex items-center gap-2 mb-4">
-                                <Lightbulb className="h-5 w-5 text-yellow-500"/>
-                                <h3 className="font-semibold">Try asking:</h3>
+                                <Lightbulb className="h-5 w-5 text-accent"/>
+                                <h3 className="font-semibold text-accent-foreground">Try asking:</h3>
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
                                 {suggestions.map((q) => (
@@ -114,7 +118,7 @@ export function AiAssistant() {
                                 <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
                                 <p className={`text-xs mt-2 ${msg.role === 'user' ? 'text-primary-foreground/70' : 'text-muted-foreground'}`}>{msg.timestamp}</p>
                             </div>
-                            {msg.role === 'user' && <User className="h-6 w-6 text-muted-foreground flex-shrink-0" />}
+                            {msg.role === 'user' && <div className="h-6 w-6 text-muted-foreground flex-shrink-0" />}
                         </div>
                     ))}
                      {isPending && (
@@ -130,7 +134,7 @@ export function AiAssistant() {
         
             <form 
                 ref={formRef}
-                action={handleFormSubmit}
+                action={handleFormAction}
                 className="flex items-center gap-2 border-t pt-4"
             >
                 <Input
