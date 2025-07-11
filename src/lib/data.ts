@@ -78,39 +78,83 @@ export type Post = {
   imageUrl: string;
   content: string;
   dataAiHint: string;
+  category: string;
+  readTime: number;
 };
 
 export const posts: Post[] = [
   {
     slug: 'surviving-first-year',
-    title: 'A Fresher\'s Guide to Surviving the First Year at SRM',
-    excerpt: 'Your first year of college can be overwhelming. Here are some essential tips to help you navigate it like a pro.',
-    author: 'Senior Student',
-    date: 'Aug 15, 2024',
+    title: 'Complete Guide to Surviving Your First Year at SRM',
+    excerpt: 'Essential tips and strategies to make your first year at SRM University successful and memorable.',
+    author: 'SRM Guide Team',
+    date: '1/15/2024',
     imageUrl: 'https://placehold.co/600x400.png',
-    dataAiHint: 'students campus',
-    content: "Welcome to SRM! The first year is a whirlwind of new experiences, friends, and challenges. The key is to find a balance. Don't just bury yourself in books; explore the campus and join a club that interests you. This is the best way to make friends and discover new passions.\n\nAttend your classes regularly. It might seem tempting to skip, but keeping up with the syllabus from day one will save you a lot of stress during exams. And remember, the 75% attendance rule is real! Finally, don't be afraid to ask for help. Whether it's from professors, seniors, or counselors, the SRM community is here to support you."
-  },
-  {
-    slug: 'must-know-clubs',
-    title: 'Top 5 Must-Know Clubs for First-Year Students',
-    excerpt: 'From tech to culture, SRM has a club for everyone. Discover the top clubs you should consider joining.',
-    author: 'Club Coordinator',
-    date: 'Aug 20, 2024',
-    imageUrl: 'https://placehold.co/600x400.png',
-    dataAiHint: 'team meeting',
-    content: "Joining a club is one of the best decisions you can make in your first year. It helps you build skills, network, and have fun. The SRM Tech Club is a must for coders and tech enthusiasts, with regular workshops and hackathons.\n\nFor those interested in public speaking and leadership, the Toastmasters Club is an excellent choice. If you have a creative spark, the Arts & Culture Club hosts numerous events and performances. The Entrepreneurship Cell (E-Cell) is perfect for aspiring business minds, and finally, joining a sports team is a great way to stay fit and build team spirit. Explore them all during the club induction season!"
+    dataAiHint: 'students walking campus',
+    content: "Welcome to SRM! The first year is a whirlwind of new experiences, friends, and challenges. The key is to find a balance. Don't just bury yourself in books; explore the campus and join a club that interests you. This is the best way to make friends and discover new passions.\n\nAttend your classes regularly. It might seem tempting to skip, but keeping up with the syllabus from day one will save you a lot of stress during exams. And remember, the 75% attendance rule is real! Finally, don't be afraid to ask for help. Whether it's from professors, seniors, or counselors, the SRM community is here to support you.",
+    category: 'First Year Guide',
+    readTime: 8,
   },
   {
     slug: 'cycle-test-prep',
-    title: 'How to Ace Your Cycle Tests: A Strategic Guide',
-    excerpt: 'Cycle tests form a crucial part of your internal marks. Learn the best strategies to prepare effectively and score well.',
-    author: 'Academic Topper',
-    date: 'Sep 01, 2024',
+    title: 'How to Prepare for Cycle Tests: A Complete Strategy',
+    excerpt: 'Master the art of cycle test preparation with proven strategies and time management techniques.',
+    author: 'Academic Team',
+    date: '1/10/2024',
     imageUrl: 'https://placehold.co/600x400.png',
-    dataAiHint: 'student studying',
-    content: "Cycle tests are not just about last-minute cramming. Consistent preparation is key. Start by reviewing your lecture notes every day. Don't let doubts pile up; clarify them with your professors immediately after class.\n\nBefore the test, focus on solving previous years' question papers. This gives you an idea of the pattern and important topics. Form a study group with friends to discuss complex concepts. On the day of the test, stay calm, manage your time well, and attempt the questions you are most confident about first. Good luck!"
-  }
+    dataAiHint: 'library books',
+    content: "Cycle tests are not just about last-minute cramming. Consistent preparation is key. Start by reviewing your lecture notes every day. Don't let doubts pile up; clarify them with your professors immediately after class.\n\nBefore the test, focus on solving previous years' question papers. This gives you an idea of the pattern and important topics. Form a study group with friends to discuss complex concepts. On the day of the test, stay calm, manage your time well, and attempt the questions you are most confident about first. Good luck!",
+    category: 'Academics',
+    readTime: 6,
+  },
+  {
+    slug: 'top-clubs-to-join',
+    title: 'Top 10 Clubs Every SRM Student Should Consider Joining',
+    excerpt: 'Discover the best clubs at SRM that can enhance your skills and boost your resume.',
+    author: 'Campus Life Team',
+    date: '1/5/2024',
+    imageUrl: 'https://placehold.co/600x400.png',
+    dataAiHint: 'students collaborating laptop',
+    content: "Joining a club is one of the best decisions you can make. It helps you build skills, network, and have fun. The SRM Tech Club is a must for coders and tech enthusiasts, with regular workshops and hackathons.\n\nFor those interested in public speaking and leadership, the Toastmasters Club is an excellent choice. If you have a creative spark, the Arts & Culture Club hosts numerous events and performances. The Entrepreneurship Cell (E-Cell) is perfect for aspiring business minds, and finally, joining a sports team is a great way to stay fit and build team spirit. Explore them all during the club induction season!",
+    category: 'Campus Life',
+    readTime: 5,
+  },
+  {
+    slug: 'gpa-system-explained',
+    title: 'Understanding the GPA System: Calculate Like a Pro',
+    excerpt: 'A deep dive into the credit and grading system at SRM. Learn how to calculate your GPA and why it matters.',
+    author: 'Academic Team',
+    date: '2/1/2024',
+    imageUrl: 'https://placehold.co/600x400.png',
+    dataAiHint: 'student calculator',
+    content: 'The GPA system can seem confusing at first, but it\'s straightforward once you get the hang of it. Your Grade Point Average (GPA) is a measure of your academic performance each semester. It is calculated by dividing the total number of grade points earned by the total number of credits attempted. Each letter grade (O, A+, A, etc.) has a corresponding point value. Mastering this will help you track your progress effectively.',
+    category: 'Academics',
+    readTime: 7,
+  },
+  {
+    slug: 'hostel-life-guide',
+    title: 'Hostel Life at SRM: What to Expect',
+    excerpt: 'From room sharing to mess food, here is a complete guide to navigating hostel life at SRM.',
+    author: 'Senior Student',
+    date: '2/10/2024',
+    imageUrl: 'https://placehold.co/600x400.png',
+    dataAiHint: 'modern living room',
+    content: 'Living in a hostel is a core part of the SRM experience. You\'ll learn to be independent, manage your time, and live with people from diverse backgrounds. The rooms are typically shared, and the mess provides daily meals. While it takes some getting used to, it\'s an opportunity to forge lifelong friendships and create unforgettable memories. Be open, be respectful, and you\'ll have a great time!',
+    category: 'Hostel Life',
+    readTime: 10,
+  },
+  {
+    slug: 'placement-preparation',
+    title: 'Placement Preparation: Starting from the First Year',
+    excerpt: 'Your journey to a great job starts on day one. Here’s how you can build your profile for placements right from your first year.',
+    author: 'Placement Cell',
+    date: '2/15/2024',
+    imageUrl: 'https://placehold.co/600x400.png',
+    dataAiHint: 'students group discussion',
+    content: 'Placements might seem far away, but the preparation starts now. Focus on maintaining a good CGPA, as many companies have an academic cutoff. Participate in hackathons, workshops, and join technical clubs to build your skills. Work on personal projects to showcase your abilities. In your third year, start preparing for aptitude tests and interviews. A consistent effort will pay off in the end.',
+    category: 'Placements',
+    readTime: 12,
+  },
 ];
 
 export const features = [
