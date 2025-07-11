@@ -1,25 +1,14 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { features, stats } from '@/lib/data';
 import { Search, Users, HelpCircle, BookOpen, Calculator, Clock, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import { HomepageSearch } from '@/components/HomepageSearch';
 
 export default function Home() {
 
-  async function searchAction(formData: FormData) {
-    'use server';
-    const query = formData.get('query');
-    if (query) {
-      redirect(`/ai-assistant?query=${encodeURIComponent(query.toString())}`);
-    } else {
-      redirect('/ai-assistant');
-    }
-  }
-
   const iconMap: { [key: string]: React.ElementType } = {
-    Bot: HelpCircle, // Using HelpCircle for AI Assistant as in image
+    Bot: HelpCircle,
     Book: BookOpen,
     Gauge: Calculator,
     Users,
@@ -34,23 +23,13 @@ export default function Home() {
         <section className="w-full py-20 md:py-32 bg-primary text-primary-foreground">
           <div className="container px-4 md:px-6 text-center">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
-              Welcome to SRM Guide
+              Welcome to <span className='text-accent'>SRM Guide</span>
             </h1>
             <p className="max-w-2xl mx-auto text-lg md:text-xl text-primary-foreground/90 mb-8">
               Your comprehensive guide to navigating SRM University. Get instant answers to all your college-related questions.
             </p>
-            <form action={searchAction} className="max-w-xl mx-auto mb-6">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input
-                  name="query"
-                  type="search"
-                  placeholder='Ask anything about SRM... (e.g. "What is the pass criteria?")'
-                  className="w-full pl-10 pr-4 py-6 rounded-full bg-background text-foreground"
-                />
-              </div>
-            </form>
-            <div className="flex justify-center gap-4">
+            <HomepageSearch />
+            <div className="flex justify-center gap-4 mt-6">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
                 <Link href="/ai-assistant">Ask AI Assistant</Link>
               </Button>

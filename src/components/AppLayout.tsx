@@ -64,21 +64,25 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background/95 backdrop-blur-sm px-4 md:px-6 z-50">
-        <Link href="/" className="flex items-center gap-2 font-semibold">
+        <Link href="/" className="flex items-center gap-2 font-semibold mr-6">
           <GraduationCap className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold">SRM Guide</span>
+          <span className="text-xl">
+            <span className='font-bold'>SRM</span> Guide
+          </span>
         </Link>
-        <div className="flex w-full items-center justify-end gap-4">
+        <div className="flex w-full items-center justify-end gap-4 md:justify-between">
             {desktopNav}
-            <div className='hidden md:flex items-center gap-2'>
-                <Button variant="outline" asChild>
-                    <Link href="#">Sign In</Link>
-                </Button>
-                <Button asChild>
-                    <Link href="#">Sign Up</Link>
-                </Button>
+            <div className='flex items-center gap-2'>
+                <div className='hidden md:flex items-center gap-2'>
+                    <Button variant="outline" asChild>
+                        <Link href="#">Sign In</Link>
+                    </Button>
+                    <Button asChild>
+                        <Link href="#">Sign Up</Link>
+                    </Button>
+                </div>
+                {mobileNav}
             </div>
-            {mobileNav}
         </div>
       </header>
       <main className="flex flex-1 flex-col">{children}</main>
