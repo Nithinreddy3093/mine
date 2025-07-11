@@ -13,13 +13,13 @@ const importantDates = [
 
 export default function DashboardPage() {
     return (
-        <div className="space-y-8">
-             <div className="text-center">
-                <h1 className="text-4xl font-semibold tracking-wide text-primary">Student Dashboard</h1>
+        <div className="p-4 md:p-6 lg:p-8">
+             <div className="text-center mb-8">
+                <h1 className="text-4xl font-bold tracking-tight text-primary">Student Tools</h1>
                 <p className="text-muted-foreground mt-2">Your one-stop place for quick calculations and important dates.</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                 <div className="lg:col-span-2 space-y-8">
                     <Card>
                         <CardHeader>
