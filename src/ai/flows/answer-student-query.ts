@@ -1,3 +1,4 @@
+
 // src/ai/flows/answer-student-query.ts
 'use server';
 
@@ -11,6 +12,7 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
+import { faqs } from '@/lib/data';
 
 const AnswerStudentQueryInputSchema = z.object({
   query: z.string().describe('The question from the student.'),
@@ -23,20 +25,39 @@ const AnswerStudentQueryOutputSchema = z.object({
 export type AnswerStudentQueryOutput = z.infer<typeof AnswerStudentQueryOutputSchema>;
 
 export async function answerStudentQuery(input: AnswerStudentQueryInput): Promise<AnswerStudentQueryOutput> {
-  return answerStudentQueryFlow(input);
+  // Serialize the FAQ data to pass to the prompt
+  const faqContext = JSON.stringify(faqs);
+  return answerStudentQueryFlow({ ...input, faqContext });
 }
 
 const answerStudentQueryPrompt = ai.definePrompt({
   name: 'answerStudentQueryPrompt',
-  input: {schema: AnswerStudentQueryInputSchema},
+  input: {schema: z.object({
+    query: z.string(),
+    faqContext: z.string(),
+  })},
   output: {schema: AnswerStudentQueryOutputSchema},
-  prompt: `You are a helpful AI assistant for SRM University freshers. Answer the following question clearly and concisely:\n\nQuestion: {{{query}}}`,
+  prompt: `You are SRM Navigator, a friendly and knowledgeable AI assistant designed to help students at SRM University. Your personality is that of a helpful senior student who knows all the ins and outs of college life.
+
+Your goal is to provide clear, comprehensive, and friendly answers to student questions.
+
+You have access to a set of Frequently Asked Questions (FAQs) to ensure your answers are accurate and specific to SRM. Use this information as your primary source of truth.
+
+FAQs Context:
+{{{faqContext}}}
+
+Now, please answer the following student's question. Be encouraging and use formatting like lists or bold text to make the information easy to digest.
+
+Student's Question: {{{query}}}`,
 });
 
 const answerStudentQueryFlow = ai.defineFlow(
   {
     name: 'answerStudentQueryFlow',
-    inputSchema: AnswerStudentQueryInputSchema,
+    inputSchema: z.object({
+        query: AnswerStudentQueryInputSchema.shape.query,
+        faqContext: z.string(),
+    }),
     outputSchema: AnswerStudentQueryOutputSchema,
   },
   async input => {
