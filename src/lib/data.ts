@@ -113,6 +113,40 @@ export const posts: Post[] = [
   }
 ];
 
+export const features = [
+  {
+    icon: 'Bot',
+    title: 'AI Assistant',
+    description: 'Get instant answers to your college-related queries with our AI-powered chatbot.',
+    href: '/ai-assistant'
+  },
+  {
+    icon: 'Book',
+    title: 'FAQ Section',
+    description: 'Find answers to frequently asked questions about academics, exams, and campus life.',
+    href: '/faq'
+  },
+  {
+    icon: 'Gauge',
+    title: 'GPA Calculator',
+    description: 'Calculate your GPA, track attendance, and manage your academic progress.',
+    href: '/dashboard'
+  },
+  {
+    icon: 'BookOpen',
+    title: 'Study Guides',
+    description: 'Access comprehensive guides and tips for succeeding in your first year.',
+    href: '/blog'
+  },
+];
+
+export const stats = [
+  { icon: 'Users', value: '5000+', label: 'Students Helped' },
+  { icon: 'HelpCircle', value: '1000+', label: 'Questions Answered' },
+  { icon: 'CheckCircle', value: '95%', label: 'Success Rate' },
+  { icon: 'Clock', value: '24/7', label: 'Support Available' },
+];
+
 export type Testimonial = {
   quote: string;
   name: string;

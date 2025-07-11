@@ -1,157 +1,124 @@
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { testimonials } from '@/lib/data';
-import { BookOpen, Users, Bot, GraduationCap } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { features, stats } from '@/lib/data';
+import { Search, Users, HelpCircle, BookOpen, Calculator, Clock, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
-
-const features = [
-  {
-    icon: Bot,
-    title: 'AI Assistant',
-    description: 'Get instant answers to your questions about SRM, from academics to campus life.',
-    href: '/ai-assistant',
-    cta: 'Ask a Question'
-  },
-  {
-    icon: BookOpen,
-    title: 'Student Handbook',
-    description: 'Explore detailed guides, FAQs, and articles about navigating college life.',
-    href: '/faq',
-    cta: 'Read the Guide'
-  },
-  {
-    icon: Users,
-    title: 'Community Tools',
-    description: 'Use our calculators and tools to stay on top of your attendance and grades.',
-    href: '/dashboard',
-    cta: 'Use the Tools'
-  },
-];
+import { redirect } from 'next/navigation';
 
 export default function Home() {
+
+  async function searchAction(formData: FormData) {
+    'use server';
+    const query = formData.get('query');
+    if (query) {
+      redirect(`/ai-assistant?query=${encodeURIComponent(query.toString())}`);
+    } else {
+      redirect('/ai-assistant');
+    }
+  }
+
+  const iconMap: { [key: string]: React.ElementType } = {
+    Bot: HelpCircle, // Using HelpCircle for AI Assistant as in image
+    Book: BookOpen,
+    Gauge: Calculator,
+    Users,
+    Clock,
+    CheckCircle
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Navigate SRM University with Confidence
-                  </h1>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Your all-in-one AI-powered companion for mastering college life. Get instant answers, calculate your grades, and stay organized.
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button asChild size="lg">
-                    <Link href="/ai-assistant">Ask our AI</Link>
-                  </Button>
-                   <Button asChild size="lg" variant="outline">
-                    <Link href="/dashboard">Explore Tools</Link>
-                  </Button>
-                </div>
+        {/* Hero Section */}
+        <section className="w-full py-20 md:py-32 bg-primary text-primary-foreground">
+          <div className="container px-4 md:px-6 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
+              Welcome to SRM Guide
+            </h1>
+            <p className="max-w-2xl mx-auto text-lg md:text-xl text-primary-foreground/90 mb-8">
+              Your comprehensive guide to navigating SRM University. Get instant answers to all your college-related questions.
+            </p>
+            <form action={searchAction} className="max-w-xl mx-auto mb-6">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Input
+                  name="query"
+                  type="search"
+                  placeholder='Ask anything about SRM... (e.g. "What is the pass criteria?")'
+                  className="w-full pl-10 pr-4 py-6 rounded-full bg-background text-foreground"
+                />
               </div>
-              <Image
-                src="https://placehold.co/600x400.png"
-                data-ai-hint="students university campus"
-                width="600"
-                height="400"
-                alt="Hero"
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
-              />
+            </form>
+            <div className="flex justify-center gap-4">
+              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Link href="/ai-assistant">Ask AI Assistant</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                <Link href="/faq">View FAQs</Link>
+              </Button>
             </div>
           </div>
         </section>
 
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+        {/* Features Section */}
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-muted-foreground/10 px-3 py-1 text-sm">Key Features</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Everything You Need to Succeed</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  From an AI assistant to academic tools, we've got you covered.
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:grid-cols-3 md:gap-12 lg:max-w-none mt-12">
-              {features.map((feature) => (
-                <Card key={feature.title}>
-                    <CardHeader className="flex flex-col items-center text-center">
-                        <div className="mb-4 rounded-full bg-primary/10 p-4">
-                          <feature.icon className="h-8 w-8 text-primary" />
-                        </div>
-                        <CardTitle>{feature.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-center">
-                        <p className="text-muted-foreground">{feature.description}</p>
-                    </CardContent>
-                    <div className="p-6 pt-0">
-                      <Button asChild className="w-full" variant="outline">
-                        <Link href={feature.href}>{feature.cta}</Link>
-                      </Button>
-                    </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-        
-        <section className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
-            <div className="space-y-3">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                What Our Users Are Saying
-              </h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Hear from students who have transformed their university experience with SRM Guide.
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Everything You Need to Succeed</h2>
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
+                From academic guidance to campus life tips, we've got you covered with all the tools and information you need.
               </p>
             </div>
-            <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-8">
-              {testimonials.map((testimonial) => (
-                <Card key={testimonial.name} className="text-left flex flex-col">
-                  <CardContent className="pt-6 flex-grow">
-                    <p className="text-muted-foreground">"{testimonial.quote}"</p>
-                  </CardContent>
-                  <CardHeader>
-                    <div className="flex items-center gap-4">
-                      <div className="relative h-12 w-12">
-                        <Image
-                          src={testimonial.avatarUrl}
-                          alt={testimonial.name}
-                          fill
-                          className="rounded-full object-cover"
-                          data-ai-hint={testimonial.dataAiHint}
-                        />
-                      </div>
-                      <div>
-                        <p className="font-semibold">{testimonial.name}</p>
-                        <p className="text-sm text-muted-foreground">{testimonial.course}</p>
-                      </div>
+            <div className="mx-auto grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {features.map((feature) => {
+                 const Icon = iconMap[feature.icon as string] || HelpCircle;
+                 return (
+                  <Card key={feature.title} className="bg-blue-50/50 hover:bg-blue-100/70 hover:shadow-lg transition-all duration-300 border-0 text-left p-6 flex flex-col items-start">
+                    <div className="mb-4 rounded-lg bg-blue-100 p-3">
+                      <Icon className="h-7 w-7 text-primary" />
                     </div>
-                  </CardHeader>
-                </Card>
-              ))}
+                    <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground">{feature.description}</p>
+                  </Card>
+                 )
+              })}
             </div>
           </div>
         </section>
 
-        <section className="w-full py-12 md:py-24 lg:py-32 border-t">
+        {/* Stats Section */}
+         <section className="w-full pb-12 md:pb-24 lg:pb-32 bg-background">
+          <div className="container px-4 md:px-6">
+            <div className="mx-auto grid max-w-5xl items-center gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {stats.map((stat) => {
+                 const Icon = iconMap[stat.icon] || Users;
+                 return (
+                    <Card key={stat.label} className="bg-card shadow-sm border p-6 flex flex-col items-center justify-center text-center">
+                        <Icon className="h-8 w-8 text-primary mb-3" />
+                        <p className="text-3xl font-bold">{stat.value}</p>
+                        <p className="text-sm text-muted-foreground">{stat.label}</p>
+                    </Card>
+                 )
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="w-full py-12 md:py-24 bg-primary text-primary-foreground">
           <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
             <div className="space-y-3">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                Ready to Master Your College Journey?
+                Ready to Start Your SRM Journey?
               </h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Jump in and explore all the features. Your smarter college experience starts now.
+              <p className="mx-auto max-w-[600px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Join thousands of students who have successfully navigated their college life with SRM Guide.
               </p>
             </div>
             <div className="mx-auto w-full max-w-sm space-y-2">
-               <Button asChild size="lg">
-                  <Link href="/ai-assistant">Get Started</Link>
+               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                  <Link href="/ai-assistant">Get Started Now</Link>
                 </Button>
             </div>
           </div>

@@ -5,6 +5,7 @@ import { getAiAnswer } from '@/actions/ai';
 import { Bot, Loader, Send, Lightbulb } from 'lucide-react';
 import { useActionState, useEffect, useRef, useState } from 'react';
 import { ScrollArea } from './ui/scroll-area';
+import { useFormStatus } from 'react-dom';
 
 const initialState = {
   answer: '',
@@ -27,19 +28,37 @@ const suggestions = [
     "What is the credit system in SRM?",
 ]
 
-export function AiAssistant() {
+function SubmitButton() {
+    const { pending } = useFormStatus();
+    return (
+        <Button type="submit" size="icon" aria-label="Ask" disabled={pending}>
+            {pending ? <Loader className="animate-spin" /> : <Send />}
+        </Button>
+    )
+}
+
+export function AiAssistant({ initialQuery }: { initialQuery?: string | null }) {
   const [state, formAction, isPending] = useActionState(getAiAnswer, initialState);
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   
   useEffect(() => {
-    setMessages([{
-        role: 'assistant',
+    const welcomeMessage = {
+        role: 'assistant' as const,
         content: "Hello! I'm your SRM Guide AI Assistant. I'm here to help you with any questions about SRM University. Ask me about academics, exams, attendance, hostel life, or anything else related to college life at SRM!",
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    }])
-  }, []);
+    };
+
+    setMessages([welcomeMessage]);
+    
+    if (initialQuery && inputRef.current) {
+        inputRef.current.value = initialQuery;
+        // Small delay to ensure state is set before submitting
+        setTimeout(() => formRef.current?.requestSubmit(), 100);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialQuery]);
 
   useEffect(() => {
     if (state.answer) {
@@ -48,10 +67,6 @@ export function AiAssistant() {
         content: state.answer,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }]);
-    }
-    // Also reset form after submission if there was a user message
-    if (formRef.current?.querySelector('input[name="query"]:not([value=""])')) {
-        formRef.current?.reset();
     }
   }, [state]);
 
@@ -72,6 +87,7 @@ export function AiAssistant() {
               timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
           }]);
           formAction(formData);
+          formRef.current?.reset();
       }
   }
 
@@ -142,11 +158,8 @@ export function AiAssistant() {
                 className="flex-grow bg-background"
                 required
                 disabled={isPending}
-                suppressHydrationWarning
                 />
-                <Button type="submit" size="icon" aria-label="Ask" disabled={isPending} suppressHydrationWarning>
-                    {isPending ? <Loader className="animate-spin" /> : <Send />}
-                </Button>
+                <SubmitButton />
             </form>
         </div>
     </div>
