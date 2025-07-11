@@ -67,7 +67,7 @@ export function GpaCalculator() {
         {subjects.map((subject, index) => (
           <div key={subject.id} className="grid grid-cols-1 md:grid-cols-6 gap-2 items-end">
             <div className="md:col-span-2 space-y-1">
-                <Label htmlFor={`credits-${subject.id}`}>Credits</Label>
+                <Label htmlFor={`credits-${subject.id}`} className={index !== 0 ? 'sr-only' : ''}>Credits</Label>
                 <Input
                     id={`credits-${subject.id}`}
                     type="number"
@@ -78,7 +78,7 @@ export function GpaCalculator() {
                 />
             </div>
             <div className="md:col-span-3 space-y-1">
-                <Label htmlFor={`grade-${subject.id}`}>Grade</Label>
+                <Label htmlFor={`grade-${subject.id}`} className={index !== 0 ? 'sr-only' : ''}>Grade</Label>
                 <Select onValueChange={(value) => handleSubjectChange(subject.id, 'grade', value)} value={subject.grade || undefined}>
                     <SelectTrigger id={`grade-${subject.id}`} suppressHydrationWarning>
                         <SelectValue placeholder="Select Grade" />
