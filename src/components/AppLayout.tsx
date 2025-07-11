@@ -5,7 +5,7 @@ import { Bot, Book, Gauge, GraduationCap, Menu, Newspaper, Users, Contact } from
 import { usePathname } from 'next/navigation';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
-import { type ReactNode } from 'react';
+import { type ReactNode, useState, useEffect } from 'react';
 
 const navItems = [
   { href: '/', label: 'Home', icon: GraduationCap },
@@ -19,11 +19,17 @@ const navItems = [
 
 function DesktopNav() {
   const pathname = usePathname();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
       {navItems.map((item) => {
         const Icon = item.icon;
-        const isActive = pathname === item.href;
+        const isActive = isClient && pathname === item.href;
         return (
             <Link
                 key={item.label}
@@ -41,6 +47,12 @@ function DesktopNav() {
 
 function MobileNav() {
     const pathname = usePathname();
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+      setIsClient(true);
+    }, []);
+
     return (
         <Sheet>
             <SheetTrigger asChild>
@@ -55,15 +67,18 @@ function MobileNav() {
                     <GraduationCap className="h-6 w-6 text-primary" />
                     <span className="text-xl font-bold">SRM Guide</span>
                 </Link>
-                {navItems.map((item) => (
-                    <Link
-                    key={item.label}
-                    href={item.href}
-                    className={`hover:text-primary ${pathname === item.href ? 'text-primary' : 'text-muted-foreground'}`}
-                    >
-                    {item.label}
-                    </Link>
-                ))}
+                {navItems.map((item) => {
+                    const isActive = isClient && pathname === item.href;
+                    return (
+                        <Link
+                        key={item.label}
+                        href={item.href}
+                        className={`hover:text-primary ${isActive ? 'text-primary' : 'text-muted-foreground'}`}
+                        >
+                        {item.label}
+                        </Link>
+                    )
+                })}
                 </nav>
             </SheetContent>
         </Sheet>
