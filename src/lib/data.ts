@@ -117,7 +117,7 @@ export const posts: Post[] = [
     excerpt: 'Discover the best clubs at SRM that can enhance your skills and boost your resume.',
     author: 'Campus Life Team',
     date: '1/5/2024',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBYhsA-PWzE04rqcBzpHgnXRigYH9YV0oktg&s',
     dataAiHint: 'university students club',
     content: "Joining a club is one of the best decisions you can make. It helps you build skills, network, and have fun. The SRM Tech Club is a must for coders and tech enthusiasts, with regular workshops and hackathons.\n\nFor those interested in public speaking and leadership, the Toastmasters Club is an excellent choice. If you have a creative spark, the Arts & Culture Club hosts numerous events and performances. The Entrepreneurship Cell (E-Cell) is perfect for aspiring business minds, and finally, joining a sports team is a great way to stay fit and build team spirit. Explore them all during the club induction season!",
     category: 'Campus Life',
