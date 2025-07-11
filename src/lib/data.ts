@@ -104,7 +104,7 @@ export const posts: Post[] = [
     excerpt: 'Master the art of cycle test preparation with proven strategies and time management techniques.',
     author: 'Academic Team',
     date: '1/10/2024',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://www.iotalliance.in/image_content/13JULY2019/11.jpg',
     dataAiHint: 'student studying exam',
     content: "Cycle tests are not just about last-minute cramming. Consistent preparation is key. Start by reviewing your lecture notes every day. Don't let doubts pile up; clarify them with your professors immediately after class.\n\nBefore the test, focus on solving previous years' question papers. This gives you an idea of the pattern and important topics. Form a study group with friends to discuss complex concepts. On the day of the test, stay calm, manage your time well, and attempt the questions you are most confident about first. Good luck!",
     category: 'Academics',
