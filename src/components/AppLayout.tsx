@@ -5,7 +5,7 @@ import { Bot, Book, Gauge, GraduationCap, Menu, Newspaper, Users, Contact } from
 import { usePathname } from 'next/navigation';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
-import { type ReactNode, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const navItems = [
   { href: '/', label: 'Home', icon: GraduationCap },
