@@ -1,8 +1,15 @@
 'use client';
 
-import { AiAssistant } from "@/components/AiAssistant";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import dynamic from 'next/dynamic';
+import { Loader } from "lucide-react";
+
+// Dynamically import the AiAssistant component with SSR turned off
+const AiAssistant = dynamic(() => import('@/components/AiAssistant').then(mod => mod.AiAssistant), { 
+    ssr: false,
+    loading: () => <div className="flex h-full items-center justify-center"><Loader className="animate-spin h-8 w-8 text-primary" /></div>
+});
 
 function AiAssistantPageComponent() {
     const searchParams = useSearchParams();
@@ -19,7 +26,7 @@ function AiAssistantPageComponent() {
 
 export default function AiAssistantPage() {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className="flex h-full items-center justify-center"><Loader className="animate-spin h-8 w-8 text-primary" /></div>}>
             <AiAssistantPageComponent />
         </Suspense>
     )
