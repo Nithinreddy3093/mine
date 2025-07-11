@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -104,10 +105,10 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         <div className='flex items-center gap-2'>
             <div className='hidden md:flex items-center gap-2'>
                 <Button variant="outline" asChild>
-                    <Link href="#">Sign In</Link>
+                    <Link href="/auth/signin">Sign In</Link>
                 </Button>
                 <Button asChild>
-                    <Link href="#">Sign Up</Link>
+                    <Link href="/auth/signup">Sign Up</Link>
                 </Button>
             </div>
             <MobileNav />
