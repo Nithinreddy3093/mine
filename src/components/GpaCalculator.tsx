@@ -20,7 +20,7 @@ type Subject = {
 
 export function GpaCalculator() {
   const [subjects, setSubjects] = useState<Subject[]>(() => 
-    Array.from({ length: 5 }, (_, i) => ({ id: i + 1, name: '', credits: '', grade: '' }))
+    [{ id: 1, name: '', credits: '', grade: '' }]
   );
   const [gpa, setGpa] = useState<number | null>(null);
   const nextId = useRef(subjects.length + 1);
