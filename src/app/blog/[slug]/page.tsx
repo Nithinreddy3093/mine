@@ -33,7 +33,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                     src={post.imageUrl}
                     alt={post.title}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     data-ai-hint={post.dataAiHint}
                 />
             </div>
