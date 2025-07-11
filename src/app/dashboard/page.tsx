@@ -15,7 +15,7 @@ export default function DashboardPage() {
     return (
         <div className="space-y-8">
              <div className="text-center">
-                <h1 className="text-4xl font-semibold tracking-wide text-primary font-headline">Student Dashboard</h1>
+                <h1 className="text-4xl font-semibold tracking-wide text-primary">Student Dashboard</h1>
                 <p className="text-muted-foreground mt-2">Your one-stop place for quick calculations and important dates.</p>
             </div>
 
@@ -23,7 +23,7 @@ export default function DashboardPage() {
                 <div className="lg:col-span-2 space-y-8">
                     <Card>
                         <CardHeader>
-                            <CardTitle className="flex items-center gap-2 font-headline"><Milestone /> Semester Timeline</CardTitle>
+                            <CardTitle className="flex items-center gap-2"><Milestone /> Semester Timeline</CardTitle>
                             <CardDescription>Key milestones for the current semester.</CardDescription>
                         </CardHeader>
                         <CardContent>
@@ -59,7 +59,7 @@ export default function DashboardPage() {
                 <div className="space-y-8">
                     <Card>
                         <CardHeader>
-                            <CardTitle className="flex items-center gap-2 font-headline"><CalendarCheck /> Important Dates</CardTitle>
+                            <CardTitle className="flex items-center gap-2"><CalendarCheck /> Important Dates</CardTitle>
                         </CardHeader>
                         <CardContent>
                            <ul className="space-y-3">

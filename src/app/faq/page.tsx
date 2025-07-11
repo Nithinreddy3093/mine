@@ -11,7 +11,7 @@ export default function FaqPage() {
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-primary font-headline">Frequently Asked Questions</h1>
+        <h1 className="text-4xl font-bold text-primary">Frequently Asked Questions</h1>
         <p className="text-muted-foreground mt-2">Find answers to common questions about SRM University.</p>
       </div>
 

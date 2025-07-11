@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Bot, Gauge, HelpCircle, Home, Newspaper, Shield } from 'lucide-react';
+import { Gauge, HelpCircle, Home, Newspaper, Shield, GraduationCap } from 'lucide-react';
 import {
   SidebarProvider,
   Sidebar,
@@ -28,7 +28,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   const pageTitle = navItems.find(item => {
     if (item.href === '/') return pathname === '/';
     return pathname.startsWith(item.href)
-  })?.label || 'SRM Navigator';
+  })?.label || 'SRM Guide';
 
   return (
     <SidebarProvider>
@@ -36,18 +36,18 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         <SidebarHeader>
           <div className="flex items-center gap-2 p-2">
             <div className="bg-primary p-2 rounded-lg flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-foreground"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                <GraduationCap className="text-primary-foreground" />
             </div>
-            <h1 className="text-xl font-bold font-headline">SRM Navigator</h1>
+            <h1 className="text-xl font-bold">SRM Guide</h1>
           </div>
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>
             {navItems.map((item) => (
               <SidebarMenuItem key={item.href}>
-                <SidebarMenuButton
+                 <SidebarMenuButton
                   asChild
-                  isActive={pathname.startsWith(item.href) && (item.href !== '/' || pathname === '/')}
+                  isActive={pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))}
                   tooltip={{ children: item.label, side: 'right' }}
                 >
                   <Link href={item.href}>
@@ -64,7 +64,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         <header className="flex h-16 items-center gap-4 border-b bg-background/95 backdrop-blur-sm px-6 sticky top-0 z-30">
           <SidebarTrigger className="md:hidden" />
           <div className="flex-1">
-            <h2 className="text-xl font-semibold capitalize font-headline">
+            <h2 className="text-xl font-semibold capitalize">
               {pageTitle}
             </h2>
           </div>

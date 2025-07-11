@@ -6,7 +6,7 @@ export default function BlogPage() {
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-primary font-headline">SRM Student Blog</h1>
+        <h1 className="text-4xl font-bold text-primary">SRM Student Blog</h1>
         <p className="text-muted-foreground mt-2">Tips, guides, and stories about life at SRM, written by students for students.</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

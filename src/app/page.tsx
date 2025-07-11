@@ -1,11 +1,10 @@
 import { AiAssistant } from '@/components/AiAssistant';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { testimonials } from '@/lib/data';
 import { BookOpen, Newspaper, Users } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const features = [
   {
@@ -28,9 +27,9 @@ const features = [
 export default function Home() {
   return (
     <div className="space-y-16 md:space-y-24">
-      <section className="text-center flex flex-col items-center">
-        <h1 className="text-4xl md:text-6xl font-bold font-headline text-primary">
-          Welcome to SRM Navigator
+      <section className="text-center flex flex-col items-center pt-8 md:pt-16">
+        <h1 className="text-4xl md:text-6xl font-bold text-primary">
+          Welcome to SRM Guide
         </h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
           Your AI-powered guide to effortlessly navigate college life at SRM University. Ask anything, find answers, and stay ahead.
@@ -46,14 +45,14 @@ export default function Home() {
 
       <section className="space-y-8 text-center">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">Why SRM Navigator?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">Why SRM Guide?</h2>
           <p className="mt-4 text-muted-foreground">
             We provide all the tools and information you need to succeed at SRM, right at your fingertips.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
           {features.map((feature) => (
-            <div key={feature.title} className="flex flex-col items-center">
+            <div key={feature.title} className="flex flex-col items-center text-center p-6 bg-card rounded-lg shadow-sm">
               <div className="bg-primary/10 p-4 rounded-full">
                 <feature.icon className="w-8 h-8 text-primary" />
               </div>
@@ -66,9 +65,9 @@ export default function Home() {
 
       <section className="space-y-8 text-center">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">What Our Users Say</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">What Our Users Say</h2>
           <p className="mt-4 text-muted-foreground">
-            Hear from students and faculty who love using SRM Navigator.
+            Hear from students and faculty who love using SRM Guide.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-8">
@@ -95,7 +94,7 @@ export default function Home() {
       </section>
       
       <section className="bg-primary/5 rounded-lg p-8 md:p-12 text-center flex flex-col items-center">
-        <h2 className="text-3xl md:text-4xl font-bold font-headline text-primary">Ready to Dive In?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-primary">Ready to Dive In?</h2>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
           Explore the dashboard, read the blog, or ask our AI assistant your first question. Your journey at SRM just got a whole lot easier.
         </p>
