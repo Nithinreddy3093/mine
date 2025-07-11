@@ -130,7 +130,7 @@ export const posts: Post[] = [
     excerpt: 'A deep dive into the credit and grading system at SRM. Learn how to calculate your GPA and why it matters.',
     author: 'Academic Team',
     date: '2/1/2024',
-    imageUrl: 'https://placehold.co/600x400.png',
+    imageUrl: 'https://img.edmissions.com/preset:sharp/rs:fill:1200:0/gravity:sm/plain/local:///static/media/upload/images/SRM.jpg',
     dataAiHint: 'student grades report',
     content: 'The GPA system can seem confusing at first, but it\'s straightforward once you get the hang of it. Your Grade Point Average (GPA) is a measure of your academic performance each semester. It is calculated by dividing the total number of grade points earned by the total number of credits attempted. Each letter grade (O, A+, A, etc.) has a corresponding point value. Mastering this will help you track your progress effectively.',
     category: 'Academics',
