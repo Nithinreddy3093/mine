@@ -1,4 +1,5 @@
 
+
 export type Faq = {
   category: string;
   questions: {
@@ -119,7 +120,7 @@ export const posts: Post[] = [
     date: '1/5/2024',
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBYhsA-PWzE04rqcBzpHgnXRigYH9YV0oktg&s',
     dataAiHint: 'university students club',
-    content: "Joining a club is one of the best decisions you can make. It helps you build skills, network, and have fun. The SRM Tech Club is a must for coders and tech enthusiasts, with regular workshops and hackathons.\n\nFor those interested in public speaking and leadership, the Toastmasters Club is an excellent choice. If you have a creative spark, the Arts & Culture Club hosts numerous events and performances. The Entrepreneurship Cell (E-Cell) is perfect for aspiring business minds, and finally, joining a sports team is a great way to stay fit and build team spirit. Explore them all during the club induction season!",
+    content: "Joining a club is one of the best decisions you can make. It helps you build skills, network, and have fun. The SRM Tech Club is a must for coders and tech enthusiasts, with regular workshops and hackathons.\n\nFor those interested in public speaking and leadership, the ToastmastersClub is an excellent choice. If you have a creative spark, the Arts & Culture Club hosts numerous events and performances. The Entrepreneurship Cell (E-Cell) is perfect for aspiring business minds, and finally, joining a sports team is a great way to stay fit and build team spirit. Explore them all during the club induction season!",
     category: 'Campus Life',
     readTime: 5,
     tags: ['Clubs', 'Campus Life', 'Student Activities']
@@ -229,4 +230,56 @@ export const testimonials: Testimonial[] = [
     avatarUrl: "https://placehold.co/100x100.png",
     dataAiHint: "professional woman"
   }
+];
+
+export type CommunityQuestion = {
+    id: number;
+    title: string;
+    description: string;
+    category: string;
+    author: string;
+    authorRole: string;
+    timestamp: string;
+    votes: number;
+    answersCount: number;
+    status: 'Answered' | 'Open';
+};
+
+export const communityQuestions: CommunityQuestion[] = [
+    {
+        id: 1,
+        title: 'What is the minimum attendance required at SRM?',
+        description: "I heard it's 75% but want to confirm. What happens if you fall below this?",
+        category: 'attendance',
+        author: 'Demo Student',
+        authorRole: 'freshman',
+        timestamp: 'Just now',
+        votes: 5,
+        answersCount: 1,
+        status: 'Answered',
+    },
+    {
+        id: 2,
+        title: 'How to calculate GPA in SRM?',
+        description: 'Can someone explain the GPA calculation method used at SRM University?',
+        category: 'academics',
+        author: 'Another Student',
+        authorRole: 'freshman',
+        timestamp: '1d ago',
+        votes: 3,
+        answersCount: 0,
+        status: 'Open',
+    },
+    {
+        id: 3,
+        title: 'Best places to eat near campus?',
+        description: 'Looking for some good and affordable food spots outside the campus. Any recommendations?',
+        category: 'campus life',
+        author: 'Foodie Coder',
+        authorRole: 'sophomore',
+        timestamp: '3d ago',
+        votes: 12,
+        answersCount: 4,
+        status: 'Answered',
+    }
 ];
