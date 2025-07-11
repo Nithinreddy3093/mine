@@ -9,7 +9,7 @@ import { Plus, Trash, Minus } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 
 const gradePoints: { [key: string]: number } = { 'O': 10, 'A+': 9, 'A': 8, 'B+': 7, 'B': 6, 'C': 5, 'RA': 0 };
-const creditOptions = ['1', '1.5', '2', '2.5', '3', '3.5', '4'];
+const creditOptions = ['5', '4', '3', '2', '1'];
 
 type Subject = {
   id: number;
