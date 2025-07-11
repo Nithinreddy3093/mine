@@ -14,7 +14,7 @@ const initialState = {
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" size="icon" aria-label="Ask" disabled={pending}>
+    <Button type="submit" size="icon" aria-label="Ask" disabled={pending} suppressHydrationWarning>
       {pending ? <Loader className="animate-spin" /> : <Send />}
     </Button>
   );
@@ -56,6 +56,7 @@ export function AiAssistant() {
               placeholder="e.g., How is GPA calculated?"
               className="flex-grow"
               required
+              suppressHydrationWarning
             />
             <SubmitButton />
           </form>
