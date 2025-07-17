@@ -38,21 +38,21 @@ export default function CommunityPage() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
-      <div className="flex justify-between items-center">
-        <div className="space-y-1">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="space-y-1 text-center sm:text-left">
           <h1 className="text-3xl font-bold">Community Q&A</h1>
           <p className="text-muted-foreground">
             Ask questions, share knowledge, and help fellow students
           </p>
         </div>
-        <Button onClick={() => setIsDialogOpen(true)}>
+        <Button onClick={() => setIsDialogOpen(true)} className="w-full sm:w-auto">
             <PlusCircle className="mr-2 h-4 w-4" />
             Ask a Question
         </Button>
       </div>
 
       <div className="p-4 bg-card rounded-lg border shadow-sm">
-        <div className="grid sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="relative sm:col-span-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input placeholder="Search questions..." className="pl-10" />

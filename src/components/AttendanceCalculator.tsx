@@ -1,10 +1,11 @@
+
 'use client';
 import { useState } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
-import { Plus, Trash, Minus } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 
 type Subject = {
   id: number;
@@ -37,7 +38,7 @@ export function AttendanceCalculator() {
   const calculatePercentage = (attended: string, total: string) => {
     const attendedNum = parseInt(attended);
     const totalNum = parseInt(total);
-    if (isNaN(attendedNum) || isNaN(totalNum) || totalNum === 0 || attendedNum > totalNum) {
+    if (isNaN(attendedNum) || isNaN(totalNum) || totalNum === 0 || attendedNum < 0 || totalNum < 0 || attendedNum > totalNum) {
       return 0;
     }
     return (attendedNum / totalNum) * 100;
@@ -59,42 +60,45 @@ export function AttendanceCalculator() {
             <div className="col-span-1 text-right">Action</div>
           </div>
           {/* Subject Rows */}
-          <div className="space-y-2">
+          <div className="space-y-4 md:space-y-2">
             {subjects.map((subject, index) => {
               const percentage = calculatePercentage(subject.attended, subject.total);
               return (
-                <div key={subject.id} className="grid grid-cols-1 md:grid-cols-12 gap-2 items-center">
+                <div key={subject.id} className="grid grid-cols-1 md:grid-cols-12 gap-2 items-center p-2 rounded-lg bg-muted/50">
                   <div className="md:col-span-4">
-                    <Label htmlFor={`name-${subject.id}`} className="sr-only">Subject Name</Label>
+                    <Label htmlFor={`name-${subject.id}`} className="md:sr-only">Subject Name</Label>
                     <Input
                       id={`name-${subject.id}`}
                       type="text"
                       placeholder={`Subject ${index + 1}`}
                       value={subject.name}
                       onChange={(e) => handleSubjectChange(subject.id, 'name', e.target.value)}
+                      className="mt-1 md:mt-0"
                     />
                   </div>
                   <div className="md:col-span-2">
-                    <Label htmlFor={`attended-${subject.id}`} className="sr-only">Classes Attended</Label>
+                    <Label htmlFor={`attended-${subject.id}`} className="md:sr-only">Classes Attended</Label>
                     <Input
                       id={`attended-${subject.id}`}
                       type="number"
                       placeholder="e.g., 30"
                       value={subject.attended}
                       onChange={(e) => handleSubjectChange(subject.id, 'attended', e.target.value)}
+                      className="mt-1 md:mt-0"
                     />
                   </div>
                   <div className="md:col-span-2">
-                    <Label htmlFor={`total-${subject.id}`} className="sr-only">Total Classes</Label>
+                    <Label htmlFor={`total-${subject.id}`} className="md:sr-only">Total Classes</Label>
                     <Input
                       id={`total-${subject.id}`}
                       type="number"
                       placeholder="e.g., 40"
                       value={subject.total}
                       onChange={(e) => handleSubjectChange(subject.id, 'total', e.target.value)}
+                      className="mt-1 md:mt-0"
                     />
                   </div>
-                  <div className={`md:col-span-3 font-semibold ${percentage < 75 ? 'text-red-500' : 'text-green-600'}`}>
+                  <div className={`md:col-span-3 font-semibold p-2 rounded text-center ${percentage < 75 ? 'text-red-600 bg-red-100' : 'text-green-600 bg-green-100'}`}>
                     {percentage.toFixed(1)}%
                   </div>
                   <div className="md:col-span-1 flex justify-end">
@@ -113,7 +117,7 @@ export function AttendanceCalculator() {
             })}
           </div>
 
-          <Button onClick={addSubject}>
+          <Button onClick={addSubject} className='w-full sm:w-auto'>
             <Plus className="mr-2 h-4 w-4" /> Add Subject
           </Button>
         </CardContent>

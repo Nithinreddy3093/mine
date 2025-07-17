@@ -38,9 +38,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 />
             </div>
 
-            <div className="p-6 md:p-10 space-y-6">
+            <div className="p-4 sm:p-6 md:p-10 space-y-6">
                 <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                         <Badge variant="outline" className="text-primary border-primary/50 bg-primary/10">{post.category}</Badge>
                         <div className="flex items-center gap-2"><User className="h-4 w-4" /> {post.author}</div>
                         <div className="flex items-center gap-2"><Calendar className="h-4 w-4" /> {post.date}</div>
@@ -52,9 +52,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                     </Button>
                 </div>
                 
-                <h1 className="text-3xl md:text-5xl font-bold text-primary">{post.title}</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-primary">{post.title}</h1>
                 
-                <div className="prose-lg max-w-none text-foreground/90 leading-relaxed space-y-4">
+                <div className="prose prose-lg max-w-none text-foreground/90 leading-relaxed space-y-4">
                     {post.content.split('\n\n').map((paragraph, index) => (
                         <p key={index}>{paragraph}</p>
                     ))}

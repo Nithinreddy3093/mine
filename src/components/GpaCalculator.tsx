@@ -84,19 +84,18 @@ export function GpaCalculator() {
             </CardHeader>
             <CardContent className="space-y-4">
                 {/* Headers */}
-                <div className="hidden md:grid grid-cols-12 gap-4 px-4 text-sm font-medium text-muted-foreground">
-                    <div className="col-span-5">Subject Name</div>
+                <div className="hidden md:grid grid-cols-12 gap-4 px-1 text-sm font-medium text-muted-foreground">
+                    <div className="col-span-6">Subject Name</div>
                     <div className="col-span-2">Grade</div>
                     <div className="col-span-2">Credit</div>
-                    <div className="col-span-2">Grade Points</div>
-                    <div className="col-span-1">Action</div>
+                    <div className="col-span-2 text-right">Action</div>
                 </div>
                 {/* Subject Rows */}
-                <div className="space-y-2">
+                <div className="space-y-4 md:space-y-2">
                     {subjects.map((subject, index) => (
                     <div key={subject.id} className="grid grid-cols-1 md:grid-cols-12 gap-2 items-center p-2 rounded-lg bg-muted/50 animate-in fade-in-50">
-                        <div className="md:col-span-5">
-                            <Label htmlFor={`name-${subject.id}`} className="sr-only">Subject Name</Label>
+                        <div className="md:col-span-6">
+                            <Label htmlFor={`name-${subject.id}`} className="md:sr-only">Subject Name</Label>
                             <Input
                                 id={`name-${subject.id}`}
                                 type="text"
@@ -104,14 +103,14 @@ export function GpaCalculator() {
                                 value={subject.name}
                                 onChange={(e) => handleSubjectChange(subject.id, 'name', e.target.value)}
                                 suppressHydrationWarning
-                                className="bg-background"
+                                className="bg-background mt-1 md:mt-0"
                             />
                         </div>
                         <div className="md:col-span-2">
-                             <Label htmlFor={`grade-${subject.id}`} className="sr-only">Grade</Label>
+                            <Label htmlFor={`grade-${subject.id}`} className="md:sr-only">Grade</Label>
                             <Select onValueChange={(value) => handleSubjectChange(subject.id, 'grade', value)} value={subject.grade || undefined}>
-                                <SelectTrigger id={`grade-${subject.id}`} suppressHydrationWarning className="bg-background">
-                                    <SelectValue placeholder="Select Grade" />
+                                <SelectTrigger id={`grade-${subject.id}`} suppressHydrationWarning className="bg-background mt-1 md:mt-0">
+                                    <SelectValue placeholder="Grade" />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {Object.keys(gradePoints).map(g => <SelectItem key={g} value={g}>{g}</SelectItem>)}
@@ -119,20 +118,17 @@ export function GpaCalculator() {
                             </Select>
                         </div>
                         <div className="md:col-span-2">
-                            <Label htmlFor={`credits-${subject.id}`} className="sr-only">Credits</Label>
+                            <Label htmlFor={`credits-${subject.id}`} className="md:sr-only">Credits</Label>
                              <Select onValueChange={(value) => handleSubjectChange(subject.id, 'credits', value)} value={subject.credits || undefined}>
-                                <SelectTrigger id={`credits-${subject.id}`} suppressHydrationWarning className="bg-background">
-                                    <SelectValue placeholder="Select Credit" />
+                                <SelectTrigger id={`credits-${subject.id}`} suppressHydrationWarning className="bg-background mt-1 md:mt-0">
+                                    <SelectValue placeholder="Credit" />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {creditOptions.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
                                 </SelectContent>
                             </Select>
                         </div>
-                         <div className="md:col-span-2 text-center text-muted-foreground">
-                             -
-                         </div>
-                        <div className="md:col-span-1 flex justify-center">
+                        <div className="md:col-span-2 flex justify-end">
                             <Button
                                 variant="ghost"
                                 size="icon"
@@ -148,11 +144,11 @@ export function GpaCalculator() {
                     ))}
                 </div>
                 {/* Actions and Total */}
-                <div className="flex justify-between items-center pt-4">
-                    <Button onClick={addSubject} suppressHydrationWarning>
+                <div className="flex flex-col sm:flex-row justify-between items-center pt-4 gap-4">
+                    <Button onClick={addSubject} suppressHydrationWarning className='w-full sm:w-auto'>
                         <Plus className="mr-2 h-4 w-4" /> Add Subject
                     </Button>
-                    <div className="text-muted-foreground font-medium">
+                    <div className="text-muted-foreground font-medium w-full sm:w-auto text-center sm:text-right">
                         Total Subjects: {subjects.length}
                     </div>
                 </div>
@@ -171,9 +167,9 @@ export function GpaCalculator() {
                 <CardTitle>SRM Grading Scale</CardTitle>
             </CardHeader>
             <CardContent>
-                <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-x-4 gap-y-2 text-sm">
+                <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-x-4 gap-y-2 text-sm">
                     {gradingScale.map(item => (
-                        <div key={item.grade} className="flex justify-between md:justify-start md:gap-4">
+                        <div key={item.grade} className="flex justify-between md:justify-start md:gap-4 p-2 bg-muted/50 rounded">
                             <span className='font-medium'>{item.grade}:</span>
                             <span className="text-muted-foreground">{item.points}</span>
                         </div>

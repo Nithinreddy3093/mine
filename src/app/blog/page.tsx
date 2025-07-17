@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from "react";
@@ -18,11 +19,11 @@ export default function BlogPage() {
   return (
     <div className="space-y-8">
       <div className="text-center space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary">SRM Guide Blog</h1>
+        <h1 className="text-3xl md:text-5xl font-bold text-primary">SRM Guide Blog</h1>
         <p className="text-muted-foreground max-w-2xl mx-auto">Comprehensive guides, tips, and insights to help you succeed at SRM University.</p>
       </div>
 
-      <div className="flex justify-center flex-wrap gap-2">
+      <div className="flex justify-center flex-wrap gap-2 px-4">
         {categories.map((category) => (
           <Button
             key={category}

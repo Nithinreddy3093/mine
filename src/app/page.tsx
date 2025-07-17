@@ -29,7 +29,7 @@ export default function Home() {
               Your comprehensive guide to navigating SRM University. Get instant answers to all your college-related questions.
             </p>
             <HomepageSearch />
-            <div className="flex justify-center gap-4 mt-6">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
                 <Link href="/ai-assistant">Ask AI Assistant</Link>
               </Button>
@@ -49,7 +49,7 @@ export default function Home() {
                 From academic guidance to campus life tips, we've got you covered with all the tools and information you need.
               </p>
             </div>
-            <div className="mx-auto grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mx-auto grid max-w-5xl items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {features.map((feature) => {
                  const Icon = iconMap[feature.icon as string] || HelpCircle;
                  return (
@@ -69,7 +69,7 @@ export default function Home() {
         {/* Stats Section */}
          <section className="w-full pb-12 md:pb-24 lg:pb-32 bg-background">
           <div className="container px-4 md:px-6">
-            <div className="mx-auto grid max-w-5xl items-center gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mx-auto grid max-w-5xl items-center gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {stats.map((stat) => {
                  const Icon = iconMap[stat.icon] || Users;
                  return (
