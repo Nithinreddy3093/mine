@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Bot, Book, Gauge, GraduationCap, Menu, Newspaper, Users, Contact } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { Button } from './ui/button';
-import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { useState, useEffect } from 'react';
 
 const navItems = [
@@ -64,6 +64,9 @@ function MobileNav() {
                 </Button>
             </SheetTrigger>
             <SheetContent side="left">
+                <SheetHeader>
+                    <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                </SheetHeader>
                 <nav className="grid gap-6 text-lg font-medium">
                 <Link href="/" className="flex items-center gap-2 text-lg font-semibold mb-4">
                     <GraduationCap className="h-6 w-6 text-primary" />
