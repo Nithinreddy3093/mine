@@ -44,12 +44,12 @@ export function AiAssistant({ initialQuery }: { initialQuery?: string | null }) 
   const [messages, setMessages] = useState<Message[]>([]);
   
   useEffect(() => {
+    // This now runs only on the client, preventing hydration mismatch
     const welcomeMessage = {
         role: 'assistant' as const,
         content: "Hello! I'm your SRM Guide AI Assistant. I'm here to help you with any questions about SRM University. Ask me about academics, exams, attendance, hostel life, or anything else related to college life at SRM!",
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
-
     setMessages([welcomeMessage]);
     
     if (initialQuery && inputRef.current) {
@@ -57,7 +57,7 @@ export function AiAssistant({ initialQuery }: { initialQuery?: string | null }) 
         formRef.current?.requestSubmit();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialQuery]);
+  }, []); // Empty dependency array ensures this runs once on mount on client-side
 
   useEffect(() => {
     if (state.answer) {
