@@ -102,14 +102,14 @@ export function GpaCalculator() {
                                 placeholder={`Subject Name`}
                                 value={subject.name}
                                 onChange={(e) => handleSubjectChange(subject.id, 'name', e.target.value)}
-                                suppressHydrationWarning
+                                
                                 className="bg-background mt-1 md:mt-0"
                             />
                         </div>
                         <div className="md:col-span-2">
                             <Label htmlFor={`grade-${subject.id}`} className="md:sr-only">Grade</Label>
                             <Select onValueChange={(value) => handleSubjectChange(subject.id, 'grade', value)} value={subject.grade || undefined}>
-                                <SelectTrigger id={`grade-${subject.id}`} suppressHydrationWarning className="bg-background mt-1 md:mt-0">
+                                <SelectTrigger id={`grade-${subject.id}`}  className="bg-background mt-1 md:mt-0">
                                     <SelectValue placeholder="Grade" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -120,7 +120,7 @@ export function GpaCalculator() {
                         <div className="md:col-span-2">
                             <Label htmlFor={`credits-${subject.id}`} className="md:sr-only">Credits</Label>
                              <Select onValueChange={(value) => handleSubjectChange(subject.id, 'credits', value)} value={subject.credits || undefined}>
-                                <SelectTrigger id={`credits-${subject.id}`} suppressHydrationWarning className="bg-background mt-1 md:mt-0">
+                                <SelectTrigger id={`credits-${subject.id}`}  className="bg-background mt-1 md:mt-0">
                                     <SelectValue placeholder="Credit" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -135,7 +135,7 @@ export function GpaCalculator() {
                                 onClick={() => removeSubject(subject.id)}
                                 disabled={subjects.length === 1}
                                 className="text-destructive hover:bg-destructive/10"
-                                suppressHydrationWarning
+                                
                             >
                                 <Minus className="h-4 w-4" />
                             </Button>
@@ -145,7 +145,7 @@ export function GpaCalculator() {
                 </div>
                 {/* Actions and Total */}
                 <div className="flex flex-col sm:flex-row justify-between items-center pt-4 gap-4">
-                    <Button onClick={addSubject} suppressHydrationWarning className='w-full sm:w-auto'>
+                    <Button onClick={addSubject}  className='w-full sm:w-auto'>
                         <Plus className="mr-2 h-4 w-4" /> Add Subject
                     </Button>
                     <div className="text-muted-foreground font-medium w-full sm:w-auto text-center sm:text-right">
