@@ -1,11 +1,11 @@
 
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
-import { Plus, Trash, Minus } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 
 const gradePoints: { [key: string]: number } = { 'O': 10, 'A+': 9, 'A': 8, 'B+': 7, 'B': 6, 'C': 5, 'RA': 0 };
@@ -23,33 +23,13 @@ export function GpaCalculator() {
     [{ id: 1, name: '', credits: '', grade: '' }]
   );
   const [gpa, setGpa] = useState<number | null>(null);
-  const nextId = useRef(subjects.length + 1);
+  const nextId = useRef(subjects.length + 2);
 
-  const addSubject = () => {
-    setSubjects([...subjects, { id: nextId.current++, name: '', credits: '', grade: '' }]);
-  };
-
-  const removeSubject = (id: number) => {
-    setSubjects(subjects.filter((s) => s.id !== id));
-    if (subjects.length === 1) {
-      setGpa(null);
-    }
-  };
-
-  const handleSubjectChange = (id: number, field: 'name' | 'credits' | 'grade', value: string) => {
-    setSubjects(subjects.map((s) => (s.id === id ? { ...s, [field]: value } : s)));
-  };
-
-  useEffect(() => {
-    calculateGpa();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subjects]);
-
-  const calculateGpa = () => {
+  const calculateGpa = (currentSubjects: Subject[]) => {
     let totalCredits = 0;
     let totalGradePoints = 0;
     
-    for (const subject of subjects) {
+    for (const subject of currentSubjects) {
       const credits = parseFloat(subject.credits);
       const grade = subject.grade;
       if (!isNaN(credits) && credits > 0 && grade in gradePoints) {
@@ -60,10 +40,30 @@ export function GpaCalculator() {
     
     if (totalCredits === 0) {
       setGpa(null);
-      return;
+    } else {
+      setGpa(+(totalGradePoints / totalCredits).toFixed(2));
     }
-    
-    setGpa(+(totalGradePoints / totalCredits).toFixed(2));
+  };
+
+  const addSubject = () => {
+    const newSubjects = [...subjects, { id: nextId.current++, name: '', credits: '', grade: '' }];
+    setSubjects(newSubjects);
+    calculateGpa(newSubjects);
+  };
+
+  const removeSubject = (id: number) => {
+    const newSubjects = subjects.filter((s) => s.id !== id);
+    setSubjects(newSubjects);
+    calculateGpa(newSubjects);
+    if (newSubjects.length === 0) {
+      setGpa(null);
+    }
+  };
+
+  const handleSubjectChange = (id: number, field: 'name' | 'credits' | 'grade', value: string) => {
+    const newSubjects = subjects.map((s) => (s.id === id ? { ...s, [field]: value } : s));
+    setSubjects(newSubjects);
+    calculateGpa(newSubjects);
   };
 
   const gradingScale = [
