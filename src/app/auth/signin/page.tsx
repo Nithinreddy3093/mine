@@ -1,4 +1,6 @@
 
+'use client';
+
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -10,7 +12,10 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useToast } from "@/hooks/use-toast";
+import { Loader2 } from "lucide-react";
 import Link from "next/link"
+import { useState } from "react";
 
 function GoogleIcon() {
     return (
@@ -25,6 +30,21 @@ function GoogleIcon() {
 }
 
 export default function SignInPage() {
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      toast({
+        title: "Signed In!",
+        description: "Welcome back! You have been successfully signed in.",
+      });
+    }, 1500);
+  }
+
   return (
     <div className="flex items-center justify-center min-h-[calc(100vh-15rem)]">
         <Card className="w-full max-w-sm">
@@ -59,7 +79,10 @@ export default function SignInPage() {
                 </div>
             </CardContent>
             <CardFooter className="flex flex-col gap-4">
-                <Button className="w-full">Sign in</Button>
+                <Button className="w-full" onClick={handleSignIn} disabled={isLoading}>
+                    {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    Sign in
+                </Button>
                 <div className="text-center text-sm">
                     Don&apos;t have an account?{" "}
                     <Link href="/auth/signup" className="underline">
