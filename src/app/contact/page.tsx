@@ -19,18 +19,14 @@ export default function ContactPage() {
     return (
         <div className="max-w-4xl mx-auto">
             <Card className="overflow-hidden shadow-2xl rounded-2xl">
-                <div className="relative h-48 bg-gray-800">
+                <div className="relative h-48 bg-black">
                     <Image
-                        src="https://placehold.co/1200x400.png"
-                        alt="Cover image"
+                        src="https://firebasestudio-hosting.web.app/images/contact-banner.png"
+                        alt="Your network is your net worth. Build it with care."
                         fill
-                        className="object-cover opacity-30"
-                        data-ai-hint="dark abstract background"
+                        className="object-cover"
+                        data-ai-hint="dark street light"
                     />
-                     <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-4">
-                        <h2 className="text-3xl font-bold">Your network is your net worth.</h2>
-                        <p className="text-lg text-gray-300">Build it with care.</p>
-                    </div>
                 </div>
 
                 <div className="relative px-6 -mt-16">
