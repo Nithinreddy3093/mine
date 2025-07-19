@@ -19,11 +19,11 @@ type Subject = {
 };
 
 export function GpaCalculator() {
-  const [subjects, setSubjects] = useState<Subject[]>(() => 
+  const [subjects, setSubjects] = useState<Subject[]>(
     [{ id: 1, name: '', credits: '', grade: '' }]
   );
   const [gpa, setGpa] = useState<number | null>(null);
-  const nextId = useRef(subjects.length + 2);
+  const nextId = useRef(2);
 
   const calculateGpa = (currentSubjects: Subject[]) => {
     let totalCredits = 0;
