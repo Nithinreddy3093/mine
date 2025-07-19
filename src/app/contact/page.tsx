@@ -2,7 +2,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Briefcase, CheckCircle, GraduationCap, Linkedin, MapPin } from "lucide-react";
+import { Briefcase, GraduationCap, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,12 +19,13 @@ export default function ContactPage() {
     return (
         <div className="max-w-4xl mx-auto">
             <Card className="overflow-hidden shadow-2xl rounded-2xl">
-                <div className="relative h-48">
+                <div className="relative h-48 w-full">
                     <Image
                         src="https://firebasestudio-hosting.web.app/images/contact-banner.png"
                         alt="Your network is your net worth. Build it with care."
-                        fill
-                        className="object-cover"
+                        layout="fill"
+                        objectFit="cover"
+                        className="absolute inset-0"
                         data-ai-hint="dark street light"
                     />
                 </div>
