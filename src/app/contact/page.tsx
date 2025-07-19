@@ -25,7 +25,6 @@ export default function ContactPage() {
                         alt="Your network is your net worth. Build it with care."
                         layout="fill"
                         objectFit="cover"
-                        className="absolute inset-0"
                         data-ai-hint="dark street light"
                     />
                 </div>
