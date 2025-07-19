@@ -1,8 +1,8 @@
 
 'use client';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { Button } from './ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Plus, Minus } from 'lucide-react';
@@ -23,7 +23,7 @@ export function GpaCalculator() {
     [{ id: 1, name: '', credits: '', grade: '' }]
   );
   const [gpa, setGpa] = useState<number | null>(null);
-  const nextId = useRef(2);
+  const [nextId, setNextId] = useState(2);
 
   const calculateGpa = (currentSubjects: Subject[]) => {
     let totalCredits = 0;
@@ -46,8 +46,9 @@ export function GpaCalculator() {
   };
 
   const addSubject = () => {
-    const newSubjects = [...subjects, { id: nextId.current++, name: '', credits: '', grade: '' }];
+    const newSubjects = [...subjects, { id: nextId, name: '', credits: '', grade: '' }];
     setSubjects(newSubjects);
+    setNextId(prevId => prevId + 1);
     calculateGpa(newSubjects);
   };
 
