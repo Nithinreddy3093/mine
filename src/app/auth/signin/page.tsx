@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 import Link from "next/link"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function GoogleIcon() {
     return (
@@ -28,7 +28,7 @@ function GoogleIcon() {
     )
 }
 
-export default function SignInPage() {
+function SignInForm() {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
@@ -45,8 +45,7 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-[calc(100vh-15rem)]">
-        <Card className="w-full max-w-sm">
+      <Card className="w-full max-w-sm">
             <CardHeader className="text-center">
                 <CardTitle className="text-2xl">Sign In</CardTitle>
                 <CardDescription>
@@ -90,6 +89,19 @@ export default function SignInPage() {
                 </div>
             </CardFooter>
         </Card>
+  )
+}
+
+export default function SignInPage() {
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  return (
+    <div className="flex items-center justify-center min-h-[calc(100vh-15rem)]">
+        {isClient ? <SignInForm /> : <Loader2 className="h-8 w-8 animate-spin" />}
     </div>
   )
 }
