@@ -58,6 +58,12 @@ const nextConfig: NextConfig = {
         hostname: 'firebasestudio-hosting.web.app',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.uconnectlabs.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

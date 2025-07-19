@@ -21,11 +21,11 @@ export default function ContactPage() {
             <Card className="overflow-hidden shadow-2xl rounded-2xl">
                 <div className="relative h-48 w-full">
                     <Image
-                        src="https://firebasestudio-hosting.web.app/images/contact-banner.png"
-                        alt="Your network is your net worth. Build it with care."
+                        src="https://cdn.uconnectlabs.com/wp-content/uploads/sites/46/2022/08/Linkedin-Logo-e1660320077673.png"
+                        alt="LinkedIn Banner"
                         layout="fill"
                         objectFit="cover"
-                        data-ai-hint="dark street light"
+                        data-ai-hint="linkedin logo"
                     />
                 </div>
 
