@@ -19,7 +19,7 @@ export default function ContactPage() {
     return (
         <div className="max-w-4xl mx-auto">
             <Card className="overflow-hidden shadow-2xl rounded-2xl">
-                <div className="relative h-48 bg-black">
+                <div className="relative h-48">
                     <Image
                         src="https://firebasestudio-hosting.web.app/images/contact-banner.png"
                         alt="Your network is your net worth. Build it with care."
