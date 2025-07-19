@@ -98,7 +98,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen w-full flex-col bg-background/60">
       <header className="sticky top-0 flex h-16 items-center justify-between gap-4 border-b bg-background/95 backdrop-blur-sm px-4 md:px-6 z-50">
-        <Link href="/" className="flex items-center gap-2 font-semibold">
+        <Link href="/" className="flex items-center gap-2 font-semibold" suppressHydrationWarning>
           <GraduationCap className="h-6 w-6 text-primary" />
           <span className="text-xl font-bold">SRM Guide</span>
         </Link>
