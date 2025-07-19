@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import Link from 'next/link';
@@ -7,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { useState, useEffect } from 'react';
+import { Footer } from './Footer';
 
 const navItems = [
   { href: '/', label: 'Home', icon: GraduationCap },
@@ -118,6 +120,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         </div>
       </header>
       <main className="flex flex-1 flex-col p-4 sm:p-6 lg:p-8">{children}</main>
+      <Footer />
     </div>
   );
 }
