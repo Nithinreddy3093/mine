@@ -23,8 +23,8 @@ export default function ContactPage() {
                     <Image
                         src="https://cdn.uconnectlabs.com/wp-content/uploads/sites/46/2022/08/Linkedin-Logo-e1660320077673.png"
                         alt="LinkedIn Banner"
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        className="object-contain"
                         data-ai-hint="linkedin logo"
                     />
                 </div>
