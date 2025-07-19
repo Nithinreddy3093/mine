@@ -11,31 +11,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { PlusCircle, Search } from 'lucide-react';
+import { MessageSquare, Search } from 'lucide-react';
 import { communityQuestions, CommunityQuestion } from '@/lib/data';
 import { QuestionCard } from '@/components/QuestionCard';
-import { AskQuestionDialog } from '@/components/AskQuestionDialog';
+import Link from 'next/link';
 
 
 export default function CommunityPage() {
   const [questions, setQuestions] = useState<CommunityQuestion[]>(communityQuestions);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const handleQuestionAsked = (newQuestion: Omit<CommunityQuestion, 'id' | 'author' | 'timestamp' | 'votes' | 'answersCount' | 'status'>) => {
-    const questionToAdd: CommunityQuestion = {
-        id: questions.length + 1,
-        ...newQuestion,
-        author: 'You',
-        timestamp: 'Just now',
-        votes: 0,
-        answersCount: 0,
-        status: 'Open',
-        authorRole: 'student'
-    };
-    setQuestions(prev => [questionToAdd, ...prev]);
-  };
-
-
+  
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
@@ -45,9 +29,11 @@ export default function CommunityPage() {
             Ask questions, share knowledge, and help fellow students
           </p>
         </div>
-        <Button onClick={() => setIsDialogOpen(true)} className="w-full sm:w-auto">
-            <PlusCircle className="mr-2 h-4 w-4" />
-            Ask a Question
+        <Button asChild className="w-full sm:w-auto">
+            <Link href="https://chat.whatsapp.com/CcDNDOGKIY268dmQRTzeLr" target="_blank" rel="noopener noreferrer">
+                <MessageSquare className="mr-2 h-4 w-4" />
+                Ask in WhatsApp Group
+            </Link>
         </Button>
       </div>
 
@@ -84,11 +70,6 @@ export default function CommunityPage() {
           <QuestionCard key={question.id} question={question} />
         ))}
       </div>
-       <AskQuestionDialog
-        isOpen={isDialogOpen}
-        onOpenChange={setIsDialogOpen}
-        onQuestionAsked={handleQuestionAsked}
-      />
     </div>
   );
 }
